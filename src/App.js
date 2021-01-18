@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import { createBlog } from './graphql/mutations';
 import { listBlogs } from './graphql/queries';
 
@@ -61,4 +62,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
