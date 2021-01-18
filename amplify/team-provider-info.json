@@ -10,6 +10,11 @@
       "StackName": "amplify-photoblog-dev-145953",
       "StackId": "arn:aws:cloudformation:us-west-2:247075233215:stack/amplify-photoblog-dev-145953/b7e35160-5917-11eb-b667-0271f6cc12a9",
       "AmplifyAppId": "ddgysx7rwi0pp"
+    },
+    "categories": {
+      "auth": {
+        "photoblog551f2a46": {}
+      }
     }
   }
 }
