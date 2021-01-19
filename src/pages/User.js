@@ -3,11 +3,11 @@ import { API, graphqlOperation } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { createBlog } from '../graphql/mutations';
 
-import UploadForm from '../components/UploadForm';
+import { UploadForm } from '../components';
 
 const initialState = { name: '', description: '' };
 
-const Admin = () => {
+const User = () => {
   const [formState, setFormState] = useState(initialState);
   const [blogs, setBlogs] = useState([]);
 
@@ -32,4 +32,4 @@ const Admin = () => {
   );
 }
 
-export default withAuthenticator(Admin);
+export default withAuthenticator(User);

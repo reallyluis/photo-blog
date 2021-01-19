@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const Guest = () => {
   return (
     <div className="guest message">
-      <Link to="/admin">Login</Link> to add photos.
+      <Link to="/user">Login</Link> to add photos.
     </div>
   );
 }

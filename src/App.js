@@ -1,19 +1,12 @@
 import { useEffect, useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import { listBlogs } from './graphql/queries';
 
-import Admin from './pages/Admin';
-import Guest from './pages/Guest';
-import Home from './pages/Home';
+import { User, Guest, Home } from './pages';
+import { Title, ImageGrid, Modal } from './components';
 
-import Title from './components/Title';
-import ImageGrid from './components/ImageGrid';
-import Modal from './components/Modal';
+import './app.css';
 
 import awsExports from "./aws-exports";
 
@@ -42,8 +35,8 @@ const App = () => {
       <div className="App">
         <Title />
         <Switch>
-          <Route path="/admin">
-            <Admin blogs={blogs} />
+          <Route path="/user">
+            <User blogs={blogs} />
           </Route>
           <Route path="/guest">
             <Guest />
