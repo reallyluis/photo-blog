@@ -1,6 +1,6 @@
 {
     "identityPoolName": "photoblog551f2a46_identitypool_551f2a46",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "photob551f2a46",
     "userPoolName": "photoblog551f2a46_userpool_551f2a46",
     "autoVerifiedAttributes": [
