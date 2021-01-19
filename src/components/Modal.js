@@ -3,11 +3,11 @@
 
 const Modal = ({ setSelectedImg, selectedImg }) => {
 
-  const handleClick = (e) => {
-    if (e.target.classList.contains('backdrop')) {
-      setSelectedImg(null);
-    }
-  }
+  // const handleClick = (e) => {
+  //   if (e.target.classList.contains('backdrop')) {
+  //     setSelectedImg(null);
+  //   }
+  // }
 
   // return (
   //   <motion.div className="backdrop" onClick={handleClick}
