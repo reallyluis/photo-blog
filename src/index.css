@@ -11,3 +11,8 @@ body{
   font-family: "Source Sans Pro";
   color: var(--secondary);
 }
+
+/* Amplify UI Component styles */
+amplify-s3-image {
+  --height: 200px;
+}

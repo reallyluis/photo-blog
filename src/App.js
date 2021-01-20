@@ -4,9 +4,9 @@ import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import { listBlogs } from './graphql/queries';
 
 import { User, Guest, Home } from './pages';
-import { Title, ImageGrid, Modal } from './components';
+import { Header, ImageGrid, Modal } from './components';
 
-import './app.css';
+import './App.css';
 
 import awsExports from "./aws-exports";
 
@@ -28,24 +28,23 @@ const App = () => {
     } catch (err) { console.log('error fetching blogs') }
   }
 
-  // console.log(blogs);
-
   return (
     <Router>
       <div className="App">
-        <Title />
+        <Header />
         <Switch>
           <Route path="/user">
             <User blogs={blogs} />
+            <ImageGrid setSelectedImg={setSelectedImg} />
           </Route>
           <Route path="/guest">
             <Guest />
+            <ImageGrid setSelectedImg={setSelectedImg} />
           </Route>
           <Route path="/">
             <Home />
           </Route>
         </Switch>
-        <ImageGrid setSelectedImg={setSelectedImg} />
         { selectedImg && (
           <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
         )}

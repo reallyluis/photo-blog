@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { AmplifyAuthenticator, AmplifySignIn, AmplifySignOut } from '@aws-amplify/ui-react';
 import { createBlog } from '../graphql/mutations';
 
-import { UploadForm } from '../components';
+import { Title, UploadForm } from '../components';
 
 const initialState = { name: '', description: '' };
 
@@ -28,8 +28,13 @@ const User = () => {
   }
 
   return (
-    <UploadForm setInput={setInput} addBlog={addBlog} />
+    <AmplifyAuthenticator>
+      <AmplifySignOut />
+      <AmplifySignIn hideSignUp={true} />
+      <Title />
+      <UploadForm setInput={setInput} addBlog={addBlog} />
+    </AmplifyAuthenticator>
   );
 }
 
-export default withAuthenticator(User);
+export default User;
