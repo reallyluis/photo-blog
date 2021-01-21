@@ -1,25 +1,36 @@
-// import React from 'react';
-// import useFirestore from '../hooks/useFirestore';
-// import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { Storage } from 'aws-amplify';
+import { AmplifyS3Image } from '@aws-amplify/ui-react';
 
 const ImageGrid = ({ setSelectedImg }) => {
-  // const { docs } = useFirestore('images');
+  const [publicFiles, setPublicFiles] = useState([]);
+  const [protectedFiles, setProtectedFiles] = useState([]);
+  const [error, setError] = useState(null);
+
+  // Public Files
+  useEffect(() => {
+    Storage.list('', { level: 'public' }) // 'public'
+      .then(result => setPublicFiles(result))
+      .catch(err => setError(err));
+  }, []);
+
+  // Protected Files
+  useEffect(() => {
+    Storage.list('', { level: 'protected' }) // 'public'
+      .then(result => setProtectedFiles(result))
+      .catch(err => setError(err));
+  }, []);
 
   return (
     <div className="img-grid">
-      { /* docs && docs.map(doc => (
-        <motion.div className="img-wrap" key={doc.id} 
-          layout
-          whileHover={{ opacity: 1 }}s
-          onClick={() => setSelectedImg(doc.url)}
-        >
-          <motion.img src={doc.url} alt="uploaded pic"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          />
-        </motion.div>
-      )) */ }
+      { error && <div className="error">{ error }</div>}
+      { publicFiles && publicFiles.map((file, id) => (
+        <AmplifyS3Image key={id} level="public" imgKey={file.key} />
+      )) }
+      <div></div>
+      { protectedFiles && protectedFiles.map((file, id) => (
+        <AmplifyS3Image key={id} level="protected" imgKey={file.key} />
+      )) }
     </div>
   )
 }

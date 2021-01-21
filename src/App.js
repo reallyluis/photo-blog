@@ -1,65 +1,59 @@
-import { useEffect, useState } from 'react';
-import Amplify, { API, graphqlOperation } from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
-import { createBlog } from './graphql/mutations';
-import { listBlogs } from './graphql/queries';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+import Amplify /* , { API, graphqlOperation } */ from 'aws-amplify';
+import { useAuth } from './hooks/useAuth';
+// import { listBlogs } from './graphql/queries';
 
-import Title from './components/Title';
-import UploadForm from './components/UploadForm';
-import ImageGrid from './components/ImageGrid';
-import Modal from './components/Modal';
+import { Admin, Guest, Home, SignIn } from './pages';
+import { Header } from './components';
+
+import './App.css';
 
 import awsExports from "./aws-exports";
 
 Amplify.configure(awsExports);
 
-const initialState = { name: '', description: '' };
-
 const App = () => {
-  const [formState, setFormState] = useState(initialState);
-  const [blogs, setBlogs] = useState([]);
-  const [selectedImg, setSelectedImg] = useState(null);
+  const { isSignedIn=false } = useAuth();
+  // const [blogs, setBlogs] = useState([]);
 
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
+  // useEffect(() => {
+  //   fetchBlogs();
+  // }, []);
 
-  function setInput(key, value) {
-    setFormState({ ...formState, [key]: value });
-  }
-
-  async function fetchBlogs() {
-    try {
-      const blogData = await API.graphql(graphqlOperation(listBlogs));
-      const blogs = blogData.data.listBlogs.items;
-      setBlogs(blogs);
-    } catch (err) { console.log('error fetching blogs') }
-  }
-
-  async function addBlog() {
-    try {
-      if (!formState.name || !formState.description) return;
-      const blog = { ...formState };
-      setBlogs([...blogs, blog]);
-      setFormState(initialState);
-      await API.graphql(graphqlOperation(createBlog, {input: blog}));
-    } catch (err) {
-      console.log('error creating blog:', err);
-    }
-  }
-
-  // console.log(blogs);
+  // async function fetchBlogs() {
+  //   try {
+  //     const blogData = await API.graphql(graphqlOperation(listBlogs));
+  //     const blogs = blogData.data.listBlogs.items;
+  //     setBlogs(blogs);
+  //   } catch (err) { console.log('error fetching blogs') }
+  // }
 
   return (
-    <div className="App">
-      <Title />
-      <UploadForm setInput={setInput} addBlog={addBlog} />
-      <ImageGrid setSelectedImg={setSelectedImg} />
-      { selectedImg && (
-        <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
-      )}
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/admin">
+            {isSignedIn ? <Admin /> : <Redirect to="/signin" />}
+          </Route>
+          <Route path="/guest">
+            <Guest />
+          </Route>
+          <Route path="/signin">
+            {isSignedIn ? <Redirect to="/admin" /> : <SignIn />}
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
-export default withAuthenticator(App);
+export default App;
