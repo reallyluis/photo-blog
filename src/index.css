@@ -2,8 +2,14 @@
 
 :root{
   --primary: #0d85ff;
+  --primary-tint: #4dc5ff;
+  --primary-shade: #0d85af;
   --secondary: #111111;
   --error: #f70606;
+
+  --amplify-primary-color: var(--primary);
+  --amplify-primary-tint: var(--primary-tint);
+  --amplify-primary-shade: var(--primary-shade);
 }
 
 /* base styles & title */
