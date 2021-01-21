@@ -1,9 +1,11 @@
-import User from './User';
+import Admin from './Admin';
+import SignIn from './SignIn';
 import Guest from './Guest';
 import Home from './Home';
 
 export {
-  User,
+  Admin,
   Guest,
   Home,
+  SignIn,
 };

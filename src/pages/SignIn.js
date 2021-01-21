@@ -1,13 +1,11 @@
 // import { useState } from 'react';
 // import { API, graphqlOperation } from 'aws-amplify';
-import { AmplifyAuthenticator, AmplifySignIn, AmplifySignOut } from '@aws-amplify/ui-react';
+import { AmplifyAuthenticator, AmplifySignIn } from '@aws-amplify/ui-react';
 // import { createBlog } from '../graphql/mutations';
-
-import { Title, UploadForm } from '../components';
 
 // const initialState = { name: '', description: '' };
 
-const User = () => {
+const SignIn = () => {
   // const [formState, setFormState] = useState(initialState);
   // const [blogs, setBlogs] = useState([]);
 
@@ -29,12 +27,12 @@ const User = () => {
 
   return (
     <AmplifyAuthenticator>
-      <AmplifySignOut />
-      <AmplifySignIn hideSignUp={true} />
-      <Title />
-      <UploadForm />
+      <AmplifySignIn
+        hideSignUp={true}
+        slot='sign-in'
+      ></AmplifySignIn>
     </AmplifyAuthenticator>
   );
 }
 
-export default User;
+export default SignIn;
