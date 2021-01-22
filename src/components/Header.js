@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { AmplifySignOut } from '@aws-amplify/ui-react';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../hooks';
 
 import './Header.css';
 
