@@ -1,38 +1,25 @@
-import { useState, useEffect } from 'react';
-import { Storage } from 'aws-amplify';
 import { AmplifyS3Image } from '@aws-amplify/ui-react';
+import { useStorage } from '../hooks/useStorage';
 
 const ImageGrid = ({ file, setSelectedImg }) => {
-  const [publicFiles, setPublicFiles] = useState([]);
-  const [protectedFiles, setProtectedFiles] = useState([]);
-  const [error, setError] = useState(null);
+  const { publicFiles=[], protectedFiles=[], error=null } = useStorage();
 
-  // Public Files
-  useEffect(() => {
-    Storage.list('', { level: 'public' })
-      .then(result => setPublicFiles(result))
-      .catch(err => setError(err));
-  }, []);
-
-  // Protected Files
-  useEffect(() => {
-    Storage.list('', { level: 'protected' })
-      .then(result => setProtectedFiles(result))
-      .catch(err => setError(err));
-  }, []);
+  const getUniqueKey = (key) => {
+    return key.split('.')[0];
+  };
 
   return (
     <div className="img-grid">
       { error && <div className="error">{ error }</div>}
-      { publicFiles && publicFiles.map((file, id) => (
-        <AmplifyS3Image key={id} level="public" imgKey={file.key} />
+      { publicFiles && publicFiles.map((file) => (
+        <AmplifyS3Image key={getUniqueKey(file.key)} level="public" imgKey={file.key} />
       )) }
       <div></div>
-      { protectedFiles && protectedFiles.map((file, id) => (
-        <AmplifyS3Image key={id} level="protected" imgKey={file.key} />
+      { protectedFiles && protectedFiles.map((file) => (
+        <AmplifyS3Image key={getUniqueKey(file.key)} level="protected" imgKey={file.key} />
       )) }
     </div>
-  )
-}
+  );
+};
 
 export default ImageGrid;
