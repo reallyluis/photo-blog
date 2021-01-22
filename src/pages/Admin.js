@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Title, UploadForm, ImageGrid, Modal } from '../components';
-import { ProvideStorage } from '../hooks/useStorage';
+import { ProvideStorage } from '../hooks';
 
 const Admin = () => {
   const [file, setFile] = useState(null);

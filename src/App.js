@@ -5,7 +5,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import Amplify /* , { API, graphqlOperation } */ from 'aws-amplify';
-import { useAuth } from './hooks/useAuth';
+import { useAuth } from './hooks';
 // import { listBlogs } from './graphql/queries';
 
 import { Admin, Guest, Home, SignIn } from './pages';
