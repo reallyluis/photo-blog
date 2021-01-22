@@ -9,14 +9,14 @@ const ImageGrid = ({ file, setSelectedImg }) => {
 
   // Public Files
   useEffect(() => {
-    Storage.list('', { level: 'public' }) // 'public'
+    Storage.list('', { level: 'public' })
       .then(result => setPublicFiles(result))
       .catch(err => setError(err));
   }, []);
 
   // Protected Files
   useEffect(() => {
-    Storage.list('', { level: 'protected' }) // 'public'
+    Storage.list('', { level: 'protected' })
       .then(result => setProtectedFiles(result))
       .catch(err => setError(err));
   }, []);
