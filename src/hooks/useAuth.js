@@ -3,14 +3,14 @@ import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
 
 const authContext = createContext();
 
+const useAuth = () => {
+  return useContext(authContext);
+};
+
 const ProvideAuth = ({ children }) => {
   const auth = useProvideAuth();
   return <authContext.Provider value={auth}>{children}</authContext.Provider>;
 }
-
-const useAuth = () => {
-  return useContext(authContext);
-};
 
 const useProvideAuth = () => {
   const [authState, setAuthState] = useState();
@@ -40,6 +40,6 @@ const useProvideAuth = () => {
 };
 
 export {
-  ProvideAuth,
   useAuth,
+  ProvideAuth,
 };

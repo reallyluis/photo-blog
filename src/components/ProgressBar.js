@@ -1,16 +1,23 @@
-import { useEffect } from 'react';
-import useStorage from '../hooks/useStorage';
+import { useEffect, useState } from 'react';
+import { useStorage } from '../hooks';
 import { motion } from 'framer-motion';
 
 const ProgressBar = ({ file, setFile }) => {
-  const { progress } = useStorage(file);
+  const [isUploading, setIsUploading] = useState(false);
+  const { progress, uploadFile } = useStorage();
 
   useEffect(() => {
-    console.log(progress);
-    if (progress === 100) {
+    if (!isUploading && progress === 0) {
+      setIsUploading(true);
+
+      if (file) {
+        uploadFile('protected', file);
+      }
+    } else if (progress === 100) {
       setFile(null);
+      setIsUploading(false);
     }
-  }, [progress, setFile]);
+  }, [file, progress, isUploading, uploadFile, setFile, setIsUploading]);
 
   return (
     <motion.div className="progress-bar"
