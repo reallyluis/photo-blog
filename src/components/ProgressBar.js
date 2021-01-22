@@ -6,7 +6,6 @@ const ProgressBar = ({ file, setFile }) => {
   const { progress } = useStorage(file);
 
   useEffect(() => {
-    console.log(progress);
     if (progress === 100) {
       setFile(null);
     }

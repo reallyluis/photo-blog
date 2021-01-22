@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Storage } from 'aws-amplify';
 import { AmplifyS3Image } from '@aws-amplify/ui-react';
 
-const ImageGrid = ({ setSelectedImg }) => {
+const ImageGrid = ({ file, setSelectedImg }) => {
   const [publicFiles, setPublicFiles] = useState([]);
   const [protectedFiles, setProtectedFiles] = useState([]);
   const [error, setError] = useState(null);
