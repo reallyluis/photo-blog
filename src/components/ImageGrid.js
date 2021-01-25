@@ -2,6 +2,8 @@ import { AmplifyS3Image } from '@aws-amplify/ui-react';
 import { useStorage } from '../hooks';
 import { generateHash } from '../helpers';
 
+import './ImageGrid.css';
+
 const ImageGrid = ({ file, setSelectedImg }) => {
   const { publicFiles=[], protectedFiles=[], error=null } = useStorage();
 
