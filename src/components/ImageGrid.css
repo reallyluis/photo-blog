@@ -1,23 +1,76 @@
-/* image grid styles */
-.img-grid{
+.photos {
   margin: 20px auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 40px;
 }
-.img-wrap{
-  overflow: hidden;
-  height: 0;
-  padding: 50% 0;
-  /* padding controls height, will always be perfectly square regardless of width */
+
+.photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.photo-grid > * {
+  /* flex: 1 1 25%; */
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 25%;
+  text-align: center;
+}
+
+.photo-grid__item {
+  background-color: var(--page-secondary);
+  padding: 2em 1em;
+  border-radius: 0.5em;
+}
+
+.photo-grid__item-controls {
+  margin: 0 auto;
+  text-align: left;
+  max-width: var(--thumbnail-width);
+}
+
+.photo-grid__view-toggle {
   position: relative;
-  opacity: 0.8;
+  display: inline-block;
+  margin: 0;
+  padding-top: .25em;
 }
-.img-wrap img{
-  min-width: 100%;
-  min-height: 100%;
-  max-width: 150%;
+
+.view-toggle__checkbox {
   position: absolute;
-  top: 0;
-  left: 0;
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.view-toggle__label {
+  margin: 0;
+  cursor: pointer;
+  width: 2em;
+  height: 1em;
+  background: gray;
+  display: inline-block;
+  border-radius: 1em;
+  position: relative;
+}
+
+.view-toggle__label::after {
+  content: '';
+  position: absolute;
+  top: .15em;
+  left: .15em;
+  width: .7em;
+  height: .7em;
+  background: white;
+  border-radius: .35em;
+  transition: .3s;
+}
+
+.view-toggle__checkbox:checked + .view-toggle__label::after {
+  left: calc(100% - .15em);
+  transform: translateX(-100%);
+}
+
+/* Amplify UI Component styles */
+amplify-s3-image {
+  --width: var(--thumbnail-width);
 }

@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useStorage } from '../hooks';
 import { motion } from 'framer-motion';
 
 import './ProgressBar.css';
 
-const ProgressBar = ({ file, setFile }) => {
-  const [isUploading, setIsUploading] = useState(false);
+const ProgressBar = ({ file, setFile, isUploading, setIsUploading }) => {
   const { progress, uploadFile } = useStorage();
 
   useEffect(() => {

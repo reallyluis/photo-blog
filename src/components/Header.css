@@ -1,10 +1,27 @@
+.header {
+  padding: 1em 0;
+  background-color: var(--page-primary);
+}
+
 .header ul {
+  max-width: var(--page-max-width);
   text-align: right;
   list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .header ul li {
   margin: 0 2em;
-  padding: 0 1em;
+  padding: 0;
   display: inline-block;
+}
+
+.header a {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: white;
+  padding: 1em;
 }

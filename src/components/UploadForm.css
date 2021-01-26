@@ -3,12 +3,12 @@ form{
   margin: 30px auto 10px;
   text-align: center;
 }
-label input{
+.upload-button input{
   height: 0;
   width: 0;
   opacity: 0;
 }
-label{
+.upload-button{
   display: block;
   width: 30px;
   height: 30px;
@@ -20,7 +20,7 @@ label{
   font-weight: bold;
   font-size: 24px;
 }
-label:hover{
+.upload-button:hover{
   background: var(--primary);
   color: white;
 }
