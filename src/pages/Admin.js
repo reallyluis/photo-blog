@@ -8,12 +8,14 @@ const Admin = () => {
 
   return (
     <ProvideStorage>
-      <Title />
-      <UploadForm file={file} setFile={setFile} />
-      <ImageGrid file={file} setSelectedImg={setSelectedImg} />
-      { selectedImg && (
-        <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
-      )}
+      <div className="container">
+        <Title />
+        <UploadForm file={file} setFile={setFile} />
+        <ImageGrid file={file} setSelectedImg={setSelectedImg} />
+        { selectedImg && (
+          <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
+        )}
+      </div>
     </ProvideStorage>
   );
 }
