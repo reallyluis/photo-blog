@@ -14,8 +14,8 @@ const buildSW = () => {
 
     // Define runtime caching rules.
     runtimeCaching: [{
-      // Match any request that ends with .png, .jpg, .jpeg or .svg.
-      urlPattern: /\.(?:png|jpg|jpeg|svg|mp4)$/,
+      // Match any request that ends with .ico, .png, .jpg, .jpeg, .svg or .webp.
+      urlPattern: /\.(?:ico|png|jpg|jpeg|svg|webp)$/,
 
       // Apply a cache-first strategy.
       handler: 'CacheFirst',
