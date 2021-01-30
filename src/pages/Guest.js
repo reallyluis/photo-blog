@@ -9,16 +9,18 @@ const Guest = () => {
 
   return (
     <ProvideStorage>
-      <Title />
-      { !isSignedIn &&
-        <div className="guest message">
-          <Link to="/signin">Sign in</Link> to add photos.
-        </div>
-      }
-      <ImageGrid setSelectedImg={setSelectedImg} />
-      { selectedImg && (
-        <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
-      )}
+      <div className="container">
+        <Title />
+        { !isSignedIn &&
+          <div className="guest message">
+            <Link to="/signin">Sign in</Link> to add photos.
+          </div>
+        }
+        <ImageGrid setSelectedImg={setSelectedImg} />
+        { selectedImg && (
+          <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
+        )}
+      </div>
     </ProvideStorage>
   );
 }

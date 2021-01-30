@@ -1,24 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
 
 :root{
+  --page-max-width: 800px;
+
+  --page-primary: #2727da;
+  --page-secondary: #e0eefc;
+
   --primary: #0d85ff;
   --primary-tint: #4dc5ff;
   --primary-shade: #0d85af;
   --secondary: #111111;
   --error: #f70606;
 
+  --thumbnail-width: 150px;
+
   --amplify-primary-color: var(--primary);
   --amplify-primary-tint: var(--primary-tint);
   --amplify-primary-shade: var(--primary-shade);
 }
 
-/* base styles & title */
-body{
-  font-family: "Source Sans Pro";
-  color: var(--secondary);
+*, ::after, ::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding : 0;
 }
 
-/* Amplify UI Component styles */
-amplify-s3-image {
-  --height: 200px;
+body{
+  color: var(--secondary);
+  font-family: "Source Sans Pro";
+  line-height: 1.6;
 }
