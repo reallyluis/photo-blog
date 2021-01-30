@@ -119,6 +119,11 @@ dist
 # production
 /build
 
+# workbox
+*.map
+sw.js
+workbox-*
+
 # misc
 .DS_Store
 .env.local
