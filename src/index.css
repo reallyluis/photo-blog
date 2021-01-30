@@ -19,14 +19,14 @@
   --amplify-primary-shade: var(--primary-shade);
 }
 
-/* base styles & title */
-body{
-  font-family: "Source Sans Pro";
-  line-height: 1.6;
-  color: var(--secondary);
-  margin: 0;
-}
-
 *, ::after, ::before {
   box-sizing: border-box;
+  margin: 0;
+  padding : 0;
+}
+
+body{
+  color: var(--secondary);
+  font-family: "Source Sans Pro";
+  line-height: 1.6;
 }

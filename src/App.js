@@ -36,18 +36,20 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Header />
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
           <Route path="/admin">
+            <Header />
             {isSignedIn ? <Admin /> : <Redirect to="/signin" />}
           </Route>
           <Route path="/guest">
+            <Header />
             <Guest />
           </Route>
           <Route path="/signin">
+            <Header />
             {isSignedIn ? <Redirect to="/admin" /> : <SignIn />}
           </Route>
         </Switch>
