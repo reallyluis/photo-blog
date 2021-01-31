@@ -1,6 +1,7 @@
 import { AmplifyS3Image } from '@aws-amplify/ui-react';
 import { useAuth, useStorage } from '../hooks';
 import { generateHash } from '../helpers';
+import ImageControl from './ImageControl';
 
 import './ImageGrid.css';
 
@@ -14,12 +15,9 @@ const ImageGrid = ({ file, setSelectedImg }) => {
     return (
       <div key={uniqueId} className="photo-grid__item">
         <AmplifyS3Image level={level} imgKey={file.key} />
-        <div className="photo-grid__item-controls">
-          <div className="photo-grid__view-toggle">
-            <input type="checkbox" id={`"view-toggle-${uniqueId}"`} className="view-toggle__checkbox" />
-            <label htmlFor={`"view-toggle-${uniqueId}"`} className="view-toggle__label"></label>
-          </div>
-        </div>
+        { isSignedIn &&
+          <ImageControl uniqueId={uniqueId} />
+        }
       </div>
     );
   };
