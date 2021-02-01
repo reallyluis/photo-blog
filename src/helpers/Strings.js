@@ -1,5 +1,5 @@
 
-const generateHash = (str) => {
+const generateHash = (str, prefix='') => {
   let hash = 0;
   let i;
 
@@ -12,7 +12,7 @@ const generateHash = (str) => {
     'n' + Math.abs(hash) :
     'p' + hash;
 
-  return hashStr;
+  return prefix + hashStr;
 };
 
 export {

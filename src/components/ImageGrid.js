@@ -10,7 +10,8 @@ const ImageGrid = ({ file, setSelectedImg }) => {
   const { publicFiles=[], protectedFiles=[], error=null } = useStorage();
 
   const renderGridItem = (file, level) => {
-    const uniqueId = generateHash(file.key);
+    const prefix = level === 'public' ? '' : 'p';
+    const uniqueId = generateHash(file.key, prefix);
 
     return (
       <div key={uniqueId} className="photo-grid__item">
