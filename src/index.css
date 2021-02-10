@@ -12,11 +12,27 @@
   --secondary: #111111;
   --error: #f70606;
 
+  --fs-h1: 4rem;
+  --fs-h2: 3rem;
+  --fs-h3: 2rem;
+  --fs-p: 1rem;
+  --fs-a: 0.9rem;
+
   --thumbnail-width: 150px;
 
   --amplify-primary-color: var(--primary);
   --amplify-primary-tint: var(--primary-tint);
   --amplify-primary-shade: var(--primary-shade);
+}
+
+@media (min-width:600px){
+  :root {
+    --fs-h1: 6rem;
+    --fs-h2: 5rem;
+    --fs-h3: 4rem;
+    --fs-p: 1.1rem;
+    --fs-a: 1rem;
+  }
 }
 
 *, ::after, ::before {

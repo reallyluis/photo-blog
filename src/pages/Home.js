@@ -10,7 +10,7 @@ const Home = () => {
       <header className="home-header">
         <img src={logo} width="64" height="64" alt="" />
       </header>
-      <video src={backgroundVideo} loop muted="muted" autoPlay="autoplay"></video>
+      <video loop muted playsInline="playsinline" autoPlay="autoplay" src={backgroundVideo}></video>
       <div className="home-overlay"></div>
       <div className="home-content">
         <h2>Photos and Blogs</h2> 
