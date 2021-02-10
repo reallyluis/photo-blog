@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import logo from '../assets/images/icon.png';
 import backgroundVideo from '../assets/videos/blur_downtown_no_sound.mp4';
 
 import './Home.css';
@@ -6,6 +7,9 @@ import './Home.css';
 const Home = () => {
   return (
     <section id="home" className="home">
+      <header className="home-header">
+        <img src={logo} width="64" height="64" alt="" />
+      </header>
       <video src={backgroundVideo} loop muted="muted" autoPlay="autoplay"></video>
       <div className="home-overlay"></div>
       <div className="home-content">
